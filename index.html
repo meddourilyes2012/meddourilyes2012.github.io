@@ -80,15 +80,16 @@
         robot policy generates an action trajectory \(a^{0}\) by iteratively denoising from
         \(a^{K} \sim \mathcal{N}(0, I)\):</p>
         $$ a^{k-1} \;=\; \frac{1}{\sqrt{\alpha_k}}\left(\, a^{k} \;-\; \frac{1-\alpha_k}{\sqrt{1-\bar{\alpha}_k}}\;\epsilon_{\theta}(a^{k},\, k,\, o_t,\, z_g) \,\right) \;+\; \sigma_k\, z $$
-        <p>The score of that policy and the Active Inference belief update share the same
-        gradient form —</p>
-        $$ s(a^{k}) \;=\; \nabla_{a^{k}} \log p(a^{k} \mid o_t, z_g) \;\approx\; -\frac{\epsilon_{\theta}(a^{k},\, k,\, o_t,\, z_g)}{\sqrt{1-\bar{\alpha}_k}},
-        \qquad
-        \Delta a \;\propto\; -\nabla_{a} F \;=\; \nabla_{a} \log p(a \mid o_t, z_g) $$
-        <p>— so each denoising step reads as a precision-weighted Bayesian belief update, with the
-        precision supplied by the noise schedule itself:</p>
-        $$ \Pi_k \;=\; \frac{\bar{\alpha}_k}{\,1-\bar{\alpha}_k\,}:
-        \qquad \Pi_K \approx 0 \;\;(\text{prior dominates, no commitment}) \;\;\longrightarrow\;\; \Pi_{k\to 0} \to \infty \;\;(\text{goal dominates, full commitment}) $$
+        <p>The score of that policy —</p>
+        $$ s(a^{k}) \;=\; \nabla_{a^{k}} \log p(a^{k} \mid o_t, z_g) \;\approx\; -\frac{\epsilon_{\theta}(a^{k},\, k,\, o_t,\, z_g)}{\sqrt{1-\bar{\alpha}_k}} $$
+        <p>— and the Active Inference belief update —</p>
+        $$ \Delta a \;\propto\; -\nabla_{a} F \;=\; \nabla_{a} \log p(a \mid o_t, z_g) $$
+        <p>— share the same gradient form. Each denoising step therefore reads as a
+        precision-weighted Bayesian belief update, with the precision supplied by the noise
+        schedule itself:</p>
+        $$ \Pi_k \;=\; \frac{\bar{\alpha}_k}{\,1-\bar{\alpha}_k\,} $$
+        <p>At \(k = K\): \(\Pi_K \approx 0\) — flat belief, the prior dominates, no commitment.
+        As \(k \to 0\): \(\Pi_k \to \infty\) — sharp belief, the goal dominates, full commitment.</p>
         <p class="math-coda">The full dreaming pass is a \(K\)-step cascade of Bayesian belief updates
         with monotonically increasing precision, converging to the MAP action. A shared gradient form
         is necessary, not sufficient — the paper is explicit about that — but it is exactly the
