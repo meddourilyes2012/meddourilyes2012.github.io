@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080e14" />
+    <meta name="description" content="Draw a few lines, generate a fantasy world, and step through a mirror that breaks along your sketch. A personal universe by Anthony (Xining) Li." />
+    <title>The Other Side · Anthony (Xining) Li</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23080e14'/%3E%3Cpath d='M15 52V30Q15 18 32 8Q49 18 49 30V52M6 43L58 36' fill='none' stroke='%23bce8ec' stroke-width='2'/%3E%3C/svg%3E" />
+    <script type="module" crossorigin src="/assets/index-D0gJnc6z.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/three-jHJIlcML.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-BbUWnz9U.css">
+  </head>
+  <body>
+    <div id="app">
+      <div class="ambient" aria-hidden="true"></div>
+      <div class="grain" aria-hidden="true"></div>
+      <header class="header">
+        <a class="identity" href="#" aria-label="Anthony (Xining) Li, back to the entrance"><span class="identity-mark" aria-hidden="true">◈</span><span>ANTHONY (XINING) LI<span class="identity-sub">A PERSONAL UNIVERSE</span></span></a>
+        <button class="text-button" id="skip">Skip to portfolio <span aria-hidden="true">↗</span></button>
+      </header>
+
+      <main id="entrance">
+        <section class="intro" aria-labelledby="intro-title">
+          <p class="eyebrow"><span class="tiny-line"></span> A WORLD ON THE OTHER SIDE</p>
+          <h1 id="intro-title">Every line,<br><span>a doorway.</span></h1>
+          <p class="intro-copy">Draw a few lines. Let AI imagine a world.<br>Then break the mirror along your sketch and step inside.</p>
+          <div class="primary-actions">
+            <button id="watch" class="button primary" disabled>Generate a world ↗</button>
+            <button id="draw" class="button secondary" hidden>Start over ＋</button>
+            <button id="cancel" class="button secondary" hidden>Cancel waiting</button>
+          </div>
+          <div class="journey" aria-label="Your journey">
+            <span class="journey-step active" data-step="draw"><b>01</b> Draw</span><i></i>
+            <span class="journey-step" data-step="world"><b>02</b> Imagine</span><i></i>
+            <span class="journey-step" data-step="fracture"><b>03</b> Step inside</span>
+          </div>
+          <p class="sample-note" id="generation-status" role="status">Connecting to AI…</p>
+        </section>
+
+        <section class="mirror-zone" aria-label="Draw on the mirror to create a fantasy world">
+          <div class="mirror-caption"><span>THE MIRROR</span><span id="mode-label">01 / A blank canvas</span></div>
+          <div class="mirror-frame" id="mirror-frame">
+            <div class="world-backdrop" id="world-backdrop"></div>
+            <canvas id="world-canvas" aria-hidden="true"></canvas>
+            <div class="veil" aria-hidden="true"></div>
+            <canvas id="drawing-canvas" aria-label="Sketch canvas. Draw with a mouse, pen, or finger, or try the example below." tabindex="0"></canvas>
+            <div class="mirror-corners" aria-hidden="true"></div>
+            <div class="mirror-instruction" id="mirror-instruction"><span id="canvas-hint">Draw your first line here</span><small>A line, a curve. Anything can begin a world.</small></div>
+            <div id="generation-progress" class="generation-progress" hidden><span id="progress-copy">Your world is taking shape…</span><progress id="progress" max="1" value="0" aria-label="Generation progress"></progress></div>
+            <div class="mirror-bottom"><span>One mirror · One world</span><span aria-hidden="true">✦</span></div>
+          </div>
+          <div class="canvas-tools" aria-label="Drawing tools">
+            <button id="example" title="Add a three-stroke example, then generate a world with AI">＋ <span>Try an example</span></button>
+            <button id="undo" title="Undo the last stroke">↶ <span>Undo</span></button>
+            <button id="clear" title="Clear all strokes">× <span>Clear</span></button>
+            <span class="tool-spacer"></span><span class="stroke-count" id="stroke-count">0 strokes</span>
+          </div>
+        </section>
+      </main>
+
+      <section id="space" class="space" aria-labelledby="space-title" hidden>
+        <div class="space-stage" id="space-stage" aria-hidden="true"></div>
+        <div class="space-content">
+          <p class="eyebrow">YOU ARE ON THE OTHER SIDE</p>
+          <h2 id="space-title" tabindex="-1">Welcome to<br><em>my world.</em></h2>
+          <p class="space-description">A space for making, exploring, and ideas worth seeing through.</p>
+          <div class="space-links">
+            <a href="#projects"><span>01</span> Projects <small>Selected work</small><i>↗</i></a>
+            <a href="#research"><span>02</span> Research <small>Notes &amp; experiments</small><i>↗</i></a>
+            <a href="#about"><span>03</span> About <small>Behind the work</small><i>↗</i></a>
+          </div>
+          <button class="button secondary" id="replay">↺ Open another world</button>
+        </div>
+        <div class="space-detail" id="space-detail" hidden>
+          <button class="text-button" id="detail-back">← Back</button>
+          <p class="eyebrow" id="detail-number"></p>
+          <h2 id="detail-title" tabindex="-1"></h2>
+          <div class="detail-copy" id="detail-copy"></div>
+        </div>
+        <div class="voice-panel" id="voice-panel">
+          <p id="spoken-text" role="status"></p>
+          <div class="voice-controls">
+            <button class="text-button" id="stop-voice" hidden>Stop the voice <span aria-hidden="true">■</span></button>
+            <button class="text-button" id="mute" aria-pressed="false" hidden>Mute <span aria-hidden="true">♪</span></button>
+          </div>
+        </div>
+        <div class="dialogue-panel" id="dialogue-panel">
+          <p class="eyebrow">TALK TO THE DIGITAL ANTHONY (XINING) LI</p>
+          <div class="dialogue-transcript" id="dialogue-transcript" role="log" aria-live="polite"></div>
+          <div class="dialogue-controls">
+            <button class="text-button" id="listen" aria-pressed="false" aria-describedby="dialogue-hint">Start listening <span aria-hidden="true">◉</span></button>
+          </div>
+          <p class="dialogue-hint" id="dialogue-hint" role="status"></p>
+        </div>
+      </section>
+
+      <footer class="footer"><span>DRAW A LINE. OPEN A WORLD.</span><span id="status" role="status" aria-live="polite">Preparing the mirror…</span><button id="motion" aria-pressed="false">Motion <span>On</span></button><span id="build"></span></footer>
+      <button class="transition-skip text-button" id="transition-skip" hidden>Skip animation ↗</button>
+      <div id="flash" class="flash" aria-hidden="true"></div>
+      <div id="session-ended" class="session-ended" role="dialog" aria-modal="true" aria-labelledby="session-title" hidden>
+        <div class="session-card">
+          <p class="eyebrow">THE SESSION ENDED</p>
+          <h2 id="session-title" tabindex="-1">The space is resting.</h2>
+          <p id="session-copy"></p>
+          <p id="session-note" role="status"></p>
+          <button class="button primary" id="reconnect">Reconnect</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
