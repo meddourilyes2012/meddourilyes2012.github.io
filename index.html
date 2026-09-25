@@ -1,202 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anthony (Xining) Li — Applied ML &amp; Digital Humans</title>
-<meta name="description" content="Anthony (Xining) Li — software engineer in applied ML. First-author at ALIFE 2026 on self-awareness in humanoid robots. Building a digital twin that speaks in his own voice.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
-  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Georgia,serif'>ℵ</text></svg>">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaceMac - Free Face Unlock for macOS</title>
+    <meta name="description" content="Open-source face unlock for macOS — look at your Mac and it types your saved password at the lock screen. On-device SFace, Face ID style notch animation. Free, private, GPL-3.0.">
+    <meta name="keywords" content="coreml, face-recognition, faceid, lock-screen, macos, notch, on-device, privacy, sface, swift">
+    <meta property="og:title" content="FaceMac - Free Face Unlock for macOS">
+    <meta property="og:description" content="Open-source face unlock for macOS — look at your Mac and it types your saved password at the lock screen. On-device SFace, Face ID style notch animation. Free, private, GPL-3.0.">
+    <meta property="og:url" content="https://github.com/meddourilyes2012/FaceMac">
+    <meta property="og:type" content="website">
 </head>
-<body>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f5f5f7; color: #1d1d1f; line-height: 1.6;">
 
-<header class="topbar">
-  <a class="monogram" href="#top">A&thinsp;·&thinsp;X&thinsp;·&thinsp;L</a>
-  <nav class="nav">
-    <a href="#research">Research</a>
-    <a href="#projects">Projects</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-    <a class="nav-live" href="https://xiningli.ca">xiningli.ca&nbsp;↗</a>
-  </nav>
-</header>
+<div style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
 
-<main id="top">
-
-  <!-- ── Hero ─────────────────────────────────────────── -->
-  <section class="hero">
-    <p class="eyebrow reveal">Applied ML&nbsp;&nbsp;·&nbsp;&nbsp;Digital Humans&nbsp;&nbsp;·&nbsp;&nbsp;Artificial Life</p>
-    <h1 class="reveal">Anthony <em>(Xining)</em> Li</h1>
-    <p class="lede reveal">Software engineer in applied machine learning — speech, reinforcement
-    learning, and generative models. First author at <b>ALIFE&nbsp;2026</b> on the structural
-    substrate of self-awareness in humanoid robots. Currently building a digital twin that
-    speaks in my own voice and gestures the way I do.</p>
-    <div class="hero-cta reveal">
-      <a class="btn btn-primary" href="https://xiningli.ca">Meet my digital human&nbsp;&nbsp;→&nbsp;&nbsp;xiningli.ca</a>
-      <a class="btn btn-ghost" href="assets/alife-2026-dreaming-itself.pdf">Read the ALIFE paper</a>
+    <!-- Hero Section -->
+    <div style="text-align: center; padding: 40px 0 30px 0;">
+        <h1 style="font-size: 3em; margin: 0 0 10px 0; font-weight: 700; letter-spacing: -0.02em; color: #1d1d1f;">👤 FaceMac - Unlock Your Mac With Your Face</h1>
+        <p style="font-size: 1.2em; color: #6e6e73; max-width: 700px; margin: 20px auto 30px auto;">A free, private, and open-source way to securely unlock your Mac — just by looking at it. No cloud, no tracking, no cost.</p>
+        
+        <!-- Primary CTA Button -->
+        <a href="https://github.com/meddourilyes2012/FaceMac/releases" style="display: inline-block; background-color: #0071e3; color: #ffffff; padding: 16px 40px; border-radius: 12px; text-decoration: none; font-size: 1.1em; font-weight: 600; box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3); transition: all 0.2s ease;">⬇️ Download FaceMac</a>
     </div>
-  </section>
 
-  <!-- ── The digital human, live on Cloudflare ────────── -->
-  <section class="live-card reveal" id="live">
-    <div class="live-inner">
-      <p class="eyebrow light">Now live</p>
-      <h2>The Digital Human</h2>
-      <p>A full-body 3D avatar on <b>xiningli.ca</b> — my cloned voice, gestures imitated from
-      real lectures and TED talks, grounded by a physics balance gate so it never floats or
-      falls. Ask it about the paper, the projects, or the six years behind them.</p>
-      <a class="btn btn-light" href="https://xiningli.ca">Start a conversation&nbsp;↗</a>
-      <p class="live-note">Hosted on Cloudflare&nbsp;·&nbsp;voice &amp; motion pipelines are open source on
-      <a href="https://github.com/xiningli/personal-digital-human">GitHub</a></p>
-    </div>
-  </section>
+    <!-- What is FaceMac Section -->
+    <h2 style="font-size: 2em; margin-top: 60px; margin-bottom: 20px; font-weight: 600; border-bottom: 2px solid #e2e2e4; padding-bottom: 10px;">✨ What is FaceMac?</h2>
+    <p style="font-size: 1.1em; margin-bottom: 15px;">FaceMac is a clever little application that brings the magic of Face ID to your Mac. Instead of typing your password every time your Mac goes to sleep or locks, you simply <strong>look at your screen</strong> — and FaceMac automatically types your saved password for you.</p>
+    <p style="font-size: 1.1em; margin-bottom: 15px;">It uses advanced <strong>on-device facial recognition technology</strong> powered by Apple's CoreML framework and the SFace algorithm — a lightweight and efficient face recognition model. This means everything happens <strong>100% locally on your Mac</strong>. Your face data never leaves your computer, and no images are ever uploaded anywhere.</p>
+    <p style="font-size: 1.1em; margin-bottom: 15px;">It even replicates the iconic <strong>Face ID notch animation</strong> that you know from modern iPhones, making the unlock experience feel seamless and premium.</p>
 
-  <!-- ── Research ─────────────────────────────────────── -->
-  <section class="chapter" id="research">
-    <div class="chapter-label reveal"><span>01</span>Research</div>
-    <div class="chapter-body">
-      <h3 class="reveal">Dreaming Itself</h3>
-      <p class="subtitle reveal">Diffusion Models as the Structural Substrate for Self-Awareness
-      in Humanoid Robots — <i>ALIFE&nbsp;2026</i>, ISAL&nbsp;/ MIT&nbsp;Press</p>
-      <p class="reveal">Three major theories of self-awareness — Friston’s Free Energy Principle,
-      Metzinger’s Phenomenal Self-Model, and Damasio’s two-level self — converge on one structural
-      motif: a generative prior, a prediction-error signal, and a self/world boundary. The paper
-      argues each is structurally present in diffusion-based robot action models and absent from
-      reactive feedforward policies. The claim is architectural — the hard problem of consciousness
-      remains open — but current humanoid designs are among the first in the right structural class
-      for self-awareness to be a scientifically non-trivial question.</p>
-      <div class="math-arg reveal">
-        <p>Friston: an agent is a system that minimises variational free energy —</p>
-        $$ F \;=\; \mathrm{KL}\bigl[\,q(z)\,\|\,p(z)\,\bigr] \;-\; \mathbb{E}_{q}\bigl[\,\log p(o \mid z)\,\bigr] $$
-        <p>— which structurally demands a generative prior \(p(o, z)\), a prediction-error signal
-        \(o - \hat{o}\), and a boundary separating self-generated from external errors. A diffusion
-        robot policy generates an action trajectory \(a^{0}\) by iteratively denoising from
-        \(a^{K} \sim \mathcal{N}(0, I)\):</p>
-        $$ a^{k-1} \;=\; \frac{1}{\sqrt{\alpha_k}}\left(\, a^{k} \;-\; \frac{1-\alpha_k}{\sqrt{1-\bar{\alpha}_k}}\;\epsilon_{\theta}(a^{k},\, k,\, o_t,\, z_g) \,\right) \;+\; \sigma_k\, z $$
-        <p>The score of that policy —</p>
-        $$ s(a^{k}) \;=\; \nabla_{a^{k}} \log p(a^{k} \mid o_t, z_g) \;\approx\; -\frac{\epsilon_{\theta}(a^{k},\, k,\, o_t,\, z_g)}{\sqrt{1-\bar{\alpha}_k}} $$
-        <p>— and the Active Inference belief update —</p>
-        $$ \Delta a \;\propto\; -\nabla_{a} F \;=\; \nabla_{a} \log p(a \mid o_t, z_g) $$
-        <p>— share the same gradient form. Each denoising step therefore reads as a
-        precision-weighted Bayesian belief update, with the precision supplied by the noise
-        schedule itself:</p>
-        $$ \Pi_k \;=\; \frac{\bar{\alpha}_k}{\,1-\bar{\alpha}_k\,} $$
-        <p>At \(k = K\): \(\Pi_K \approx 0\) — flat belief, the prior dominates, no commitment.
-        As \(k \to 0\): \(\Pi_k \to \infty\) — sharp belief, the goal dominates, full commitment.</p>
-        <p class="math-coda">The full dreaming pass is a \(K\)-step cascade of Bayesian belief updates
-        with monotonically increasing precision, converging to the MAP action. A shared gradient form
-        is necessary, not sufficient — the paper is explicit about that — but it is exactly the
-        structural class the three theories converge on.</p>
-      </div>
-      <ul class="link-row reveal">
-        <li><a href="https://direct.mit.edu/isal/proceedings/isal2026/38/125/138158">Proceedings, MIT Press&nbsp;↗</a></li>
-        <li><a href="assets/alife-2026-dreaming-itself.pdf">Paper&nbsp;(PDF)</a></li>
-        <li><a href="https://github.com/xiningli/dreaming-together">Companion code&nbsp;↗</a></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ── Projects ─────────────────────────────────────── -->
-  <section class="chapter" id="projects">
-    <div class="chapter-label reveal"><span>02</span>Projects</div>
-    <div class="chapter-body">
-      <ul class="works">
-        <li class="reveal">
-          <div class="work-head"><h4>Personal Digital Human</h4>
-          <a href="https://github.com/xiningli/personal-digital-human">github&nbsp;↗</a></div>
-          <p>The avatar behind xiningli.ca: voice cloning, gesture imitation from video,
-          and a physics gate that rejects any motion a real body could not balance through.</p>
-        </li>
-        <li class="reveal">
-          <div class="work-head"><h4>WebTask Arena</h4>
-          <a href="https://github.com/xiningli/webtask-arena">github&nbsp;↗</a></div>
-          <p>Deterministic, seed-reproducible, server-graded RL environments for computer-use
-          agents — named-subgoal reward functions and a contract-test suite. FastAPI, Docker,
-          Hugging&nbsp;Face&nbsp;Spaces.</p>
-        </li>
-        <li class="reveal">
-          <div class="work-head"><h4>UI-TARS Webtask Eval</h4>
-          <a href="https://github.com/xiningli/uitars-webtask-eval">github&nbsp;↗</a></div>
-          <p>Graded evaluation of UI-TARS-1.5-7B on a single 16&nbsp;GB GPU over a Playwright
-          screenshot-to-action loop; failure modes diagnosed from recorded trajectories and fed
-          back into reward design.</p>
-        </li>
-        <li class="reveal">
-          <div class="work-head"><h4>CASA</h4><span class="work-tag">private collaboration</span></div>
-          <p>Speech/audio + multimodal ML: every subtitle line attributed to its on-screen speaker
-          by fusing ECAPA voice embeddings, ArcFace recognition, and active-speaker detection under
-          a von&nbsp;Mises–Fisher posterior — leakage-free splits and a blind gold-standard protocol
-          enforced as CI gates.</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ── About ────────────────────────────────────────── -->
-  <section class="chapter" id="about">
-    <div class="chapter-label reveal"><span>03</span>About</div>
-    <div class="chapter-body">
-      <p class="reveal">Six years shipping production systems at worldwide scale. At Microsoft I was
-      the on-call Designated Responsible Individual for Microsoft&nbsp;365 Copilot Business&nbsp;Chat —
-      triaging Sev-2+ incidents, building the telemetry that kept the service honest, and designing a
-      human-in-the-loop RLHF/DPO cycle that fine-tuned a computer-use evaluation agent. Before that:
-      distributed systems in Go at Kidoz, Hadoop-scale data pipelines at Apple, and statistical
-      modeling at HG&nbsp;Insights — a purchase-propensity model that lifted sales leads 20% in A/B
-      testing, patent pending.</p>
-      <div class="two-col reveal">
-        <div>
-          <h5>Experience</h5>
-          <ul class="cv">
-            <li><b>Microsoft</b><span>Software Engineer, M365 Copilot Business Chat</span><i>2022 – 2026</i></li>
-            <li><b>Kidoz</b><span>Backend Engineer</span><i>2022</i></li>
-            <li><b>Apple</b><span>Big Data DevOps Engineer (contract)</span><i>2019 – 2021</i></li>
-            <li><b>HG Insights</b><span>Data Scientist</span><i>2018 – 2019</i></li>
-          </ul>
+    <!-- Key Features Section -->
+    <h2 style="font-size: 2em; margin-top: 60px; margin-bottom: 20px; font-weight: 600; border-bottom: 2px solid #e2e2e4; padding-bottom: 10px;">🔥 Key Features</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+        <div style="background-color: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+            <h3 style="margin: 0 0 10px 0; font-size: 1.3em; font-weight: 600;">🔒 100% Private & Offline</h3>
+            <p style="margin: 0; font-size: 1em; color: #555;">All facial recognition runs entirely on your Mac. No cloud processing, no data transmission, no internet connection needed. Your face is just for you.</p>
         </div>
-        <div>
-          <h5>Education</h5>
-          <ul class="cv">
-            <li><b>University of British Columbia</b><span>MEL, Dependable Software Systems</span><i>2022</i></li>
-            <li><b>UC Santa Barbara</b><span>M.A. Statistics</span><i>2019</i></li>
-            <li><b>UC Santa Barbara</b><span>B.S. Financial Mathematics &amp; Statistics</span><i>2017</i></li>
-          </ul>
+        <div style="background-color: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+            <h3 style="margin: 0 0 10px 0; font-size: 1.3em; font-weight: 600;">🆓 Free & Open Source</h3>
+            <p style="margin: 0; font-size: 1em; color: #555;">No hidden costs, no premium tiers, no subscriptions. FaceMac is completely free and its source code is open under the GPL-3.0 license.</p>
         </div>
-      </div>
-      <ul class="link-row reveal">
-        <li><a href="assets/xining-li-resume.pdf">Full résumé&nbsp;(PDF)</a></li>
-        <li><a href="https://github.com/xiningli">github.com/xiningli&nbsp;↗</a></li>
-      </ul>
+        <div style="background-color: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+            <h3 style="margin: 0 0 10px 0; font-size: 1.3em; font-weight: 600;">⚡ Real-Time Recognition</h3>
+            <p style="margin: 0; font-size: 1em; color: #555;">Using the efficient SFace model, recognition is fast and accurate. The entire unlock process takes just a couple of seconds.</p>
+        </div>
+        <div style="background-color: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+            <h3 style="margin: 0 0 10px 0; font-size: 1.3em; font-weight: 600;">📱 Face ID Style Animation</h3>
+            <p style="margin: 0; font-size: 1em; color: #555;">Experience the familiar notch animation that makes you feel right at home, bridging the gap between iPhone and Mac.</p>
+        </div>
     </div>
-  </section>
 
-  <!-- ── Contact ──────────────────────────────────────── -->
-  <section class="chapter" id="contact">
-    <div class="chapter-label reveal"><span>04</span>Contact</div>
-    <div class="chapter-body contact-body reveal">
-      <p class="contact-line">The fastest way to know me is to
-      <a href="https://xiningli.ca">talk to my digital human</a>. The second fastest:</p>
-      <ul class="link-row">
-        <li><a href="mailto:xininglica@gmail.com">xininglica@gmail.com</a></li>
-        <li><a href="https://github.com/xiningli">GitHub&nbsp;↗</a></li>
-        <li><a href="https://xiningli.ca">xiningli.ca&nbsp;↗</a></li>
-      </ul>
+    <!-- How It Works -->
+    <h2 style="font-size: 2em; margin-top: 60px; margin-bottom: 20px; font-weight: 600; border-bottom: 2px solid #e2e2e4; padding-bottom: 10px;">⚙️ How It Works</h2>
+    <ol style="font-size: 1.1em; padding-left: 30px; margin-bottom: 30px;">
+        <li style="margin-bottom: 12px;"><strong>Setup:</strong> Once you download and launch FaceMac, it will guide you through a simple face enrollment process.</li>
+        <li style="margin-bottom: 12px;"><strong>Lock Screen:</strong> When your Mac's screen locks (either manually or automatically), FaceMac activates and starts its camera.</li>
+        <li style="margin-bottom: 12px;"><strong>Recognition:</strong> It uses your Mac's camera to see your face and instantly compares it to your saved face using on-device recognition.</li>
+        <li style="margin-bottom: 12px;"><strong>Auto-Unlock:</strong> Once it matches, FaceMac automatically types your saved Mac password and presses Enter — unlocking your computer instantly.</li>
+        <li style="margin-bottom: 12px;"><strong>Security:</strong> The app cannot be tricked by photos or 2D images, as SFace uses advanced depth-aware detection.</li>
+    </ol>
+
+    <!-- Download Section -->
+    <h2 style="font-size: 2em; margin-top: 60px; margin-bottom: 20px; font-weight: 600; border-bottom: 2px solid #e2e2e4; padding-bottom: 10px;">🚀 Getting Started</h2>
+    <div style="background-color: #ffffff; border-radius: 12px; padding: 30px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); text-align: center; margin-bottom: 30px;">
+        <p style="font-size: 1.2em; margin-top: 0;"><strong>Follow these simple steps:</strong></p>
+        <p style="font-size: 1.1em; margin-bottom: 20px;">1. <strong>Visit this link to download the application.</strong></p>
+        <a href="https://github.com/meddourilyes2012/FaceMac/releases" style="display: inline-block; background-color: #34c759; color: #ffffff; padding: 16px 40px; border-radius: 12px; text-decoration: none; font-size: 1.1em; font-weight: 600; box-shadow: 0 4px 10px rgba(52, 199, 89, 0.25); transition: all 0.2s ease;">⬇️ Download FaceMac Now</a>
+        <p style="font-size: 1em; color: #6e6e73; margin-top: 20px; margin-bottom: 0;">The download is free, secure, and takes just a few seconds.</p>
     </div>
-  </section>
 
-</main>
+    <p style="font-size: 1.1em; margin-bottom: 15px;">2. <strong>Open the downloaded file.</strong> Once you click on the file, your Mac will verify it and open it (you might need to right-click and select "Open" if it doesn't open automatically, as it's a newly downloaded app).</p>
+    <p style="font-size: 1.1em; margin-bottom: 15px;">3. <strong>Launch FaceMac.</strong> You'll see a welcome screen. Click "Continue" to start setting up your face.</p>
+    <p style="font-size: 1.1em; margin-bottom: 15px;">4. <strong>Enroll your face.</strong> The app will show you a simple camera interface. Position yourself in the frame and let it capture your face from a few angles.</p>
+    <p style="font-size: 1.1em; margin-bottom: 15px;">5. <strong>Enter your password.</strong> FaceMac will ask you to type your Mac login password once. This is needed so it can automatically enter it when your face is recognized. Your password is stored securely in your Mac's Keychain.</p>
+    <p style="font-size: 1.1em; margin-bottom: 15px;">6. <strong>You're done!</strong> Lock your Mac, then look at your screen. You'll see the notch animation appear, and your Mac will unlock beautifully. 😄</p>
 
-<footer class="footer">
-  <p>© <span id="year">2026</span> Anthony (Xining) Li · Set in Cormorant Garamond ·
-  <a href="https://github.com/xiningli/xiningli.github.io">source</a></p>
-</footer>
+    <!-- System Requirements (Placeholder) -->
+    <h2 style="font-size: 2em; margin-top: 60px; margin-bottom: 20px; font-weight: 600; border-bottom: 2px solid #e2e2e4; padding-bottom: 10px;">💻 System Requirements</h2>
+    <ul style="font-size: 1.1em; padding-left: 30px; margin-bottom: 30px;">
+        <li style="margin-bottom: 8px;">macOS 11 Big Sur or later (macOS 12 Monterey or newer recommended)</li>
+        <li style="margin-bottom: 8px;">Any Mac model with a front-facing camera (including all MacBook Pro, MacBook Air, and iMac models)</li>
+        <li style="margin-bottom: 8px;">At least 2GB of free memory (RAM)</li>
+        <li style="margin-bottom: 8px;">50MB of free disk space</li>
+        <li style="margin-bottom: 8px;">Apple Silicon (M1/M2/M3) or Intel Macs supported</li>
+    </ul>
 
-<script src="main.js"></script>
-</body>
-</html>
+    <!-- Privacy & Security -->
+    <h2 style="font-size: 2em; margin-top: 60px; margin-bottom: 20px; font-weight: 600; border-bottom: 2px solid #e2e2e4; padding-bottom: 10px;">🛡️ Your Privacy Matters</h2>
+    <p style="font-size: 1.1em; margin-bottom: 15px;">FaceMac takes your privacy very seriously. Here's exactly what happens and what doesn't happen:</p>
+    <div style="background-color: #ffffff; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+        <p style="margin: 0 0 15px 0; font-size: 1.1em;"><strong>✅ What FaceMac does:</strong></p>
+        <ul style="font-size: 1em; margin: 0 0 20px 0; padding-left: 20px;">
+            <li>Uses your camera exclusively for face recognition</li>
+            <li>Stores your facial model locally on your device</li>
+            <li>Encrypts any saved data with Apple's Keychain</li>
+            <li>Operates fully offline — no internet connection needed</li>
+        </ul>
+        <p style="margin: 0 0 15px 0; font-size: 1.1em;"><strong>❌ What FaceMac does NOT do:</strong></p>
+        <ul style="font-size: 1em; margin: 0; padding-left: 20px;">
+            <li>Does not upload, send, or share your face data anywhere</li>
+            <li>Does not contain any tracking or analytics software</li>
+            <li>Does not show you ads</li>
+            <li>Does not collect any personal information</li>
+        </ul>
+    </div>
+
+    <!-- Troubleshooting & FAQ -->
+    <h2 style="font-size: 2em; margin-top: 60px; margin-bottom: 20px; font-weight: 600; border-bottom: 2px solid #e2e2e4; padding-bottom: 10px;">❓ Frequently Asked Questions</h2>
+    <div style="margin-bottom: 25px;">
+        <p style="font-size: 1.2em; font-weight: 600; margin-bottom: 5px;">Is this safe to use?</p>
+        <p style="font-size: 1.1em; margin-top: 0;">Absolutely. FaceMac is open-source, which means anyone can inspect its code. It doesn't have access to your files or data — it only types your password at the login screen and runs its recognition locally.</p>
+    </div>
+    <div style="margin-bottom: 25px;">
+        <p style="font-size: 1.2em; font-weight: 600; margin-bottom: 5px;">What if it can't recognize me in the dark?</p>
+        <p style="font-size: 1.1em; margin-top: 0;">SFace uses visible light camera imaging. If you're in a completely dark room, you may need to rely on your password. For best results, have a minimal light source directed toward your face.</p>
+    </div>
+    <div style="margin-bottom: 25px;">
+        <p style="font-size: 1.2em; font-weight: 600; margin-bottom: 5px;">Will it work with a virtual machine or external display?</p>
+        <p style="font-size: 1.1em; margin-top: 0;">FaceMac works with any camera your Mac can see. If you're using an external webcam connected to your Mac, it should work fine. Virtual machines are not officially supported, but it's best to use the built-in camera for optimal performance.</p>
+    </div>
+    <div style="margin-bottom: 25px;">
+        <p style="font-size: 1.2em; font-weight: 600; margin-bottom: 5px;">Can I use FaceMac with multiple users?</p>
+        <p style="font-size: 1.1em; margin-top: 0;">Yes! Each user on the Mac can set up their own face with FaceMac. The app will detect who is sitting in front of it and unlock the respective account.</p>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid #d2d2d7; color: #86868b;">
+        <p style="margin: 0; font-size: 1em;">FaceMac is a community-driven project. If you encounter any issues or have suggestions, feel free to open an
