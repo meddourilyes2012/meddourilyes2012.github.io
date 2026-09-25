@@ -1,112 +1,175 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#080e14" />
-    <meta name="description" content="Draw a few lines, generate a fantasy world, and step through a mirror that breaks along your sketch. A personal universe by Anthony (Xining) Li." />
-    <title>The Other Side · Anthony (Xining) Li</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23080e14'/%3E%3Cpath d='M15 52V30Q15 18 32 8Q49 18 49 30V52M6 43L58 36' fill='none' stroke='%23bce8ec' stroke-width='2'/%3E%3C/svg%3E" />
-    <script type="module" crossorigin src="/assets/index-D0gJnc6z.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/three-jHJIlcML.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-BbUWnz9U.css">
-  </head>
-  <body>
-    <div id="app">
-      <div class="ambient" aria-hidden="true"></div>
-      <div class="grain" aria-hidden="true"></div>
-      <header class="header">
-        <a class="identity" href="#" aria-label="Anthony (Xining) Li, back to the entrance"><span class="identity-mark" aria-hidden="true">◈</span><span>ANTHONY (XINING) LI<span class="identity-sub">A PERSONAL UNIVERSE</span></span></a>
-        <button class="text-button" id="skip">Skip to portfolio <span aria-hidden="true">↗</span></button>
-      </header>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anthony (Xining) Li — Applied ML &amp; Digital Humans</title>
+<meta name="description" content="Anthony (Xining) Li — software engineer in applied ML. First-author at ALIFE 2026 on self-awareness in humanoid robots. Building a digital twin that speaks in his own voice.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Georgia,serif'>ℵ</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-      <main id="entrance">
-        <section class="intro" aria-labelledby="intro-title">
-          <p class="eyebrow"><span class="tiny-line"></span> A WORLD ON THE OTHER SIDE</p>
-          <h1 id="intro-title">Every line,<br><span>a doorway.</span></h1>
-          <p class="intro-copy">Draw a few lines. Let AI imagine a world.<br>Then break the mirror along your sketch and step inside.</p>
-          <div class="primary-actions">
-            <button id="watch" class="button primary" disabled>Generate a world ↗</button>
-            <button id="draw" class="button secondary" hidden>Start over ＋</button>
-            <button id="cancel" class="button secondary" hidden>Cancel waiting</button>
-          </div>
-          <div class="journey" aria-label="Your journey">
-            <span class="journey-step active" data-step="draw"><b>01</b> Draw</span><i></i>
-            <span class="journey-step" data-step="world"><b>02</b> Imagine</span><i></i>
-            <span class="journey-step" data-step="fracture"><b>03</b> Step inside</span>
-          </div>
-          <p class="sample-note" id="generation-status" role="status">Connecting to AI…</p>
-        </section>
+<header class="topbar">
+  <a class="monogram" href="#top">A&thinsp;·&thinsp;X&thinsp;·&thinsp;L</a>
+  <nav class="nav">
+    <a href="#research">Research</a>
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a class="nav-live" href="https://xiningli.ca">xiningli.ca&nbsp;↗</a>
+  </nav>
+</header>
 
-        <section class="mirror-zone" aria-label="Draw on the mirror to create a fantasy world">
-          <div class="mirror-caption"><span>THE MIRROR</span><span id="mode-label">01 / A blank canvas</span></div>
-          <div class="mirror-frame" id="mirror-frame">
-            <div class="world-backdrop" id="world-backdrop"></div>
-            <canvas id="world-canvas" aria-hidden="true"></canvas>
-            <div class="veil" aria-hidden="true"></div>
-            <canvas id="drawing-canvas" aria-label="Sketch canvas. Draw with a mouse, pen, or finger, or try the example below." tabindex="0"></canvas>
-            <div class="mirror-corners" aria-hidden="true"></div>
-            <div class="mirror-instruction" id="mirror-instruction"><span id="canvas-hint">Draw your first line here</span><small>A line, a curve. Anything can begin a world.</small></div>
-            <div id="generation-progress" class="generation-progress" hidden><span id="progress-copy">Your world is taking shape…</span><progress id="progress" max="1" value="0" aria-label="Generation progress"></progress></div>
-            <div class="mirror-bottom"><span>One mirror · One world</span><span aria-hidden="true">✦</span></div>
-          </div>
-          <div class="canvas-tools" aria-label="Drawing tools">
-            <button id="example" title="Add a three-stroke example, then generate a world with AI">＋ <span>Try an example</span></button>
-            <button id="undo" title="Undo the last stroke">↶ <span>Undo</span></button>
-            <button id="clear" title="Clear all strokes">× <span>Clear</span></button>
-            <span class="tool-spacer"></span><span class="stroke-count" id="stroke-count">0 strokes</span>
-          </div>
-        </section>
-      </main>
+<main id="top">
 
-      <section id="space" class="space" aria-labelledby="space-title" hidden>
-        <div class="space-stage" id="space-stage" aria-hidden="true"></div>
-        <div class="space-content">
-          <p class="eyebrow">YOU ARE ON THE OTHER SIDE</p>
-          <h2 id="space-title" tabindex="-1">Welcome to<br><em>my world.</em></h2>
-          <p class="space-description">A space for making, exploring, and ideas worth seeing through.</p>
-          <div class="space-links">
-            <a href="#projects"><span>01</span> Projects <small>Selected work</small><i>↗</i></a>
-            <a href="#research"><span>02</span> Research <small>Notes &amp; experiments</small><i>↗</i></a>
-            <a href="#about"><span>03</span> About <small>Behind the work</small><i>↗</i></a>
-          </div>
-          <button class="button secondary" id="replay">↺ Open another world</button>
-        </div>
-        <div class="space-detail" id="space-detail" hidden>
-          <button class="text-button" id="detail-back">← Back</button>
-          <p class="eyebrow" id="detail-number"></p>
-          <h2 id="detail-title" tabindex="-1"></h2>
-          <div class="detail-copy" id="detail-copy"></div>
-        </div>
-        <div class="voice-panel" id="voice-panel">
-          <p id="spoken-text" role="status"></p>
-          <div class="voice-controls">
-            <button class="text-button" id="stop-voice" hidden>Stop the voice <span aria-hidden="true">■</span></button>
-            <button class="text-button" id="mute" aria-pressed="false" hidden>Mute <span aria-hidden="true">♪</span></button>
-          </div>
-        </div>
-        <div class="dialogue-panel" id="dialogue-panel">
-          <p class="eyebrow">TALK TO THE DIGITAL ANTHONY (XINING) LI</p>
-          <div class="dialogue-transcript" id="dialogue-transcript" role="log" aria-live="polite"></div>
-          <div class="dialogue-controls">
-            <button class="text-button" id="listen" aria-pressed="false" aria-describedby="dialogue-hint">Start listening <span aria-hidden="true">◉</span></button>
-          </div>
-          <p class="dialogue-hint" id="dialogue-hint" role="status"></p>
-        </div>
-      </section>
+  <!-- ── Hero ─────────────────────────────────────────── -->
+  <section class="hero">
+    <p class="eyebrow reveal">Applied ML&nbsp;&nbsp;·&nbsp;&nbsp;Digital Humans&nbsp;&nbsp;·&nbsp;&nbsp;Artificial Life</p>
+    <h1 class="reveal">Anthony <em>(Xining)</em> Li</h1>
+    <p class="lede reveal">Software engineer in applied machine learning — speech, reinforcement
+    learning, and generative models. First author at <b>ALIFE&nbsp;2026</b> on the structural
+    substrate of self-awareness in humanoid robots. Currently building a digital twin that
+    speaks in my own voice and gestures the way I do.</p>
+    <div class="hero-cta reveal">
+      <a class="btn btn-primary" href="https://xiningli.ca">Meet my digital human&nbsp;&nbsp;→&nbsp;&nbsp;xiningli.ca</a>
+      <a class="btn btn-ghost" href="assets/alife-2026-dreaming-itself.pdf">Read the ALIFE paper</a>
+    </div>
+  </section>
 
-      <footer class="footer"><span>DRAW A LINE. OPEN A WORLD.</span><span id="status" role="status" aria-live="polite">Preparing the mirror…</span><button id="motion" aria-pressed="false">Motion <span>On</span></button><span id="build"></span></footer>
-      <button class="transition-skip text-button" id="transition-skip" hidden>Skip animation ↗</button>
-      <div id="flash" class="flash" aria-hidden="true"></div>
-      <div id="session-ended" class="session-ended" role="dialog" aria-modal="true" aria-labelledby="session-title" hidden>
-        <div class="session-card">
-          <p class="eyebrow">THE SESSION ENDED</p>
-          <h2 id="session-title" tabindex="-1">The space is resting.</h2>
-          <p id="session-copy"></p>
-          <p id="session-note" role="status"></p>
-          <button class="button primary" id="reconnect">Reconnect</button>
+  <!-- ── The digital human, live on Cloudflare ────────── -->
+  <section class="live-card reveal" id="live">
+    <div class="live-inner">
+      <p class="eyebrow light">Now live</p>
+      <h2>The Digital Human</h2>
+      <p>A full-body 3D avatar on <b>xiningli.ca</b> — my cloned voice, gestures imitated from
+      real lectures and TED talks, grounded by a physics balance gate so it never floats or
+      falls. Ask it about the paper, the projects, or the six years behind them.</p>
+      <a class="btn btn-light" href="https://xiningli.ca">Start a conversation&nbsp;↗</a>
+      <p class="live-note">Hosted on Cloudflare&nbsp;·&nbsp;voice &amp; motion pipelines are open source on
+      <a href="https://github.com/xiningli/personal-digital-human">GitHub</a></p>
+    </div>
+  </section>
+
+  <!-- ── Research ─────────────────────────────────────── -->
+  <section class="chapter" id="research">
+    <div class="chapter-label reveal"><span>01</span>Research</div>
+    <div class="chapter-body">
+      <h3 class="reveal">Dreaming Itself</h3>
+      <p class="subtitle reveal">Diffusion Models as the Structural Substrate for Self-Awareness
+      in Humanoid Robots — <i>ALIFE&nbsp;2026</i>, ISAL&nbsp;/ MIT&nbsp;Press</p>
+      <p class="reveal">Three major theories of self-awareness — Friston’s Free Energy Principle,
+      Metzinger’s Phenomenal Self-Model, and Damasio’s two-level self — converge on one structural
+      motif: a generative prior, a prediction-error signal, and a self/world boundary. The paper
+      argues each is structurally present in diffusion-based robot action models and absent from
+      reactive feedforward policies. The claim is architectural — the hard problem of consciousness
+      remains open — but current humanoid designs are among the first in the right structural class
+      for self-awareness to be a scientifically non-trivial question.</p>
+      <ul class="link-row reveal">
+        <li><a href="https://direct.mit.edu/isal/proceedings/isal2026/38/125/138158">Proceedings, MIT Press&nbsp;↗</a></li>
+        <li><a href="assets/alife-2026-dreaming-itself.pdf">Paper&nbsp;(PDF)</a></li>
+        <li><a href="https://github.com/xiningli/dreaming-together">Companion code&nbsp;↗</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Projects ─────────────────────────────────────── -->
+  <section class="chapter" id="projects">
+    <div class="chapter-label reveal"><span>02</span>Projects</div>
+    <div class="chapter-body">
+      <ul class="works">
+        <li class="reveal">
+          <div class="work-head"><h4>Personal Digital Human</h4>
+          <a href="https://github.com/xiningli/personal-digital-human">github&nbsp;↗</a></div>
+          <p>The avatar behind xiningli.ca: voice cloning, gesture imitation from video,
+          and a physics gate that rejects any motion a real body could not balance through.</p>
+        </li>
+        <li class="reveal">
+          <div class="work-head"><h4>WebTask Arena</h4>
+          <a href="https://github.com/xiningli/webtask-arena">github&nbsp;↗</a></div>
+          <p>Deterministic, seed-reproducible, server-graded RL environments for computer-use
+          agents — named-subgoal reward functions and a contract-test suite. FastAPI, Docker,
+          Hugging&nbsp;Face&nbsp;Spaces.</p>
+        </li>
+        <li class="reveal">
+          <div class="work-head"><h4>UI-TARS Webtask Eval</h4>
+          <a href="https://github.com/xiningli/uitars-webtask-eval">github&nbsp;↗</a></div>
+          <p>Graded evaluation of UI-TARS-1.5-7B on a single 16&nbsp;GB GPU over a Playwright
+          screenshot-to-action loop; failure modes diagnosed from recorded trajectories and fed
+          back into reward design.</p>
+        </li>
+        <li class="reveal">
+          <div class="work-head"><h4>CASA</h4><span class="work-tag">private collaboration</span></div>
+          <p>Speech/audio + multimodal ML: every subtitle line attributed to its on-screen speaker
+          by fusing ECAPA voice embeddings, ArcFace recognition, and active-speaker detection under
+          a von&nbsp;Mises–Fisher posterior — leakage-free splits and a blind gold-standard protocol
+          enforced as CI gates.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── About ────────────────────────────────────────── -->
+  <section class="chapter" id="about">
+    <div class="chapter-label reveal"><span>03</span>About</div>
+    <div class="chapter-body">
+      <p class="reveal">Six years shipping production systems at worldwide scale. At Microsoft I was
+      the on-call Designated Responsible Individual for Microsoft&nbsp;365 Copilot Business&nbsp;Chat —
+      triaging Sev-2+ incidents, building the telemetry that kept the service honest, and designing a
+      human-in-the-loop RLHF/DPO cycle that fine-tuned a computer-use evaluation agent. Before that:
+      distributed systems in Go at Kidoz, Hadoop-scale data pipelines at Apple, and statistical
+      modeling at HG&nbsp;Insights — a purchase-propensity model that lifted sales leads 20% in A/B
+      testing, patent pending.</p>
+      <div class="two-col reveal">
+        <div>
+          <h5>Experience</h5>
+          <ul class="cv">
+            <li><b>Microsoft</b><span>Software Engineer, M365 Copilot Business Chat</span><i>2022 – 2026</i></li>
+            <li><b>Kidoz</b><span>Backend Engineer</span><i>2022</i></li>
+            <li><b>Apple</b><span>Big Data DevOps Engineer (contract)</span><i>2019 – 2021</i></li>
+            <li><b>HG Insights</b><span>Data Scientist</span><i>2018 – 2019</i></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Education</h5>
+          <ul class="cv">
+            <li><b>University of British Columbia</b><span>MEL, Dependable Software Systems</span><i>2022</i></li>
+            <li><b>UC Santa Barbara</b><span>M.A. Statistics</span><i>2019</i></li>
+            <li><b>UC Santa Barbara</b><span>B.S. Financial Mathematics &amp; Statistics</span><i>2017</i></li>
+          </ul>
         </div>
       </div>
+      <ul class="link-row reveal">
+        <li><a href="assets/xining-li-resume.pdf">Full résumé&nbsp;(PDF)</a></li>
+        <li><a href="https://github.com/xiningli">github.com/xiningli&nbsp;↗</a></li>
+      </ul>
     </div>
-  </body>
+  </section>
+
+  <!-- ── Contact ──────────────────────────────────────── -->
+  <section class="chapter" id="contact">
+    <div class="chapter-label reveal"><span>04</span>Contact</div>
+    <div class="chapter-body contact-body reveal">
+      <p class="contact-line">The fastest way to know me is to
+      <a href="https://xiningli.ca">talk to my digital human</a>. The second fastest:</p>
+      <ul class="link-row">
+        <li><a href="mailto:xininglica@gmail.com">xininglica@gmail.com</a></li>
+        <li><a href="https://github.com/xiningli">GitHub&nbsp;↗</a></li>
+        <li><a href="https://xiningli.ca">xiningli.ca&nbsp;↗</a></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© <span id="year">2026</span> Anthony (Xining) Li · Set in Cormorant Garamond ·
+  <a href="https://github.com/xiningli/xiningli.github.io">source</a></p>
+</footer>
+
+<script src="main.js"></script>
+</body>
 </html>
