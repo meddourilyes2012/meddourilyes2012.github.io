@@ -8,6 +8,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Georgia,serif'>ℵ</text></svg>">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -68,6 +72,28 @@
       reactive feedforward policies. The claim is architectural — the hard problem of consciousness
       remains open — but current humanoid designs are among the first in the right structural class
       for self-awareness to be a scientifically non-trivial question.</p>
+      <div class="math-arg reveal">
+        <p>Friston: an agent is a system that minimises variational free energy —</p>
+        $$ F \;=\; \mathrm{KL}\bigl[\,q(z)\,\|\,p(z)\,\bigr] \;-\; \mathbb{E}_{q}\bigl[\,\log p(o \mid z)\,\bigr] $$
+        <p>— which structurally demands a generative prior \(p(o, z)\), a prediction-error signal
+        \(o - \hat{o}\), and a boundary separating self-generated from external errors. A diffusion
+        robot policy generates an action trajectory \(a^{0}\) by iteratively denoising from
+        \(a^{K} \sim \mathcal{N}(0, I)\):</p>
+        $$ a^{k-1} \;=\; \frac{1}{\sqrt{\alpha_k}}\left(\, a^{k} \;-\; \frac{1-\alpha_k}{\sqrt{1-\bar{\alpha}_k}}\;\epsilon_{\theta}(a^{k},\, k,\, o_t,\, z_g) \,\right) \;+\; \sigma_k\, z $$
+        <p>The score of that policy and the Active Inference belief update share the same
+        gradient form —</p>
+        $$ s(a^{k}) \;=\; \nabla_{a^{k}} \log p(a^{k} \mid o_t, z_g) \;\approx\; -\frac{\epsilon_{\theta}(a^{k},\, k,\, o_t,\, z_g)}{\sqrt{1-\bar{\alpha}_k}},
+        \qquad
+        \Delta a \;\propto\; -\nabla_{a} F \;=\; \nabla_{a} \log p(a \mid o_t, z_g) $$
+        <p>— so each denoising step reads as a precision-weighted Bayesian belief update, with the
+        precision supplied by the noise schedule itself:</p>
+        $$ \Pi_k \;=\; \frac{\bar{\alpha}_k}{\,1-\bar{\alpha}_k\,}:
+        \qquad \Pi_K \approx 0 \;\;(\text{prior dominates, no commitment}) \;\;\longrightarrow\;\; \Pi_{k\to 0} \to \infty \;\;(\text{goal dominates, full commitment}) $$
+        <p class="math-coda">The full dreaming pass is a \(K\)-step cascade of Bayesian belief updates
+        with monotonically increasing precision, converging to the MAP action. A shared gradient form
+        is necessary, not sufficient — the paper is explicit about that — but it is exactly the
+        structural class the three theories converge on.</p>
+      </div>
       <ul class="link-row reveal">
         <li><a href="https://direct.mit.edu/isal/proceedings/isal2026/38/125/138158">Proceedings, MIT Press&nbsp;↗</a></li>
         <li><a href="assets/alife-2026-dreaming-itself.pdf">Paper&nbsp;(PDF)</a></li>
